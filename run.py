@@ -43,6 +43,25 @@ game_area = Frame(
 #Add game frame position
 game_area.place(x=0, y=120)
 
+class Minesweeper:
+    def __init__(self, root, rows=5, cols=5, mines=5):
+        #initialize the main variables
+        self.root = root
+        self.rows = rows
+        self.cols = cols
+        self.mines = mines
+
+        #Add Start button
+        self.start_button = Button(
+            top_frame,
+            text = "Start",
+            command=self.start_game
+        )
+        #Add stat button with padding
+        self.start_button.pack(pady=10)
+
+        #Starts the game
+        self.start_game()
 
 #Run the Game
 root.mainloop()
