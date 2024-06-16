@@ -77,5 +77,11 @@ class Minesweeper:
         #Set to hold mine locations
         self.mines_set = set()
 
+        #Place mines on board manually
+        while len(self.mines_set) < self.mines:
+            row = random.randint(0, self.rows -1)
+            col = random.randint(0, self.cols -1)
+            self.mines_set.add((row, col))
+
 #Run the Game
 root.mainloop()
