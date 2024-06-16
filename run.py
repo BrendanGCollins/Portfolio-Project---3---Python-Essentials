@@ -63,5 +63,19 @@ class Minesweeper:
         #Starts the game
         self.start_game()
 
+    def start_game(self):
+        #Clear game area of any existing widgets
+        for widget in game_area.winfo_children():
+            widget.destroy()
+
+        #Start game board with zeros
+        self.board = [[0 for _ in range(self.cols)] for _ in range(self.rows)]
+
+        #start button array for button widgets
+        self.buttons = [[None for _ in range(self.cols)] for _ in range(self.rows)]
+
+        #Set to hold mine locations
+        self.mines_set = set()
+
 #Run the Game
 root.mainloop()
