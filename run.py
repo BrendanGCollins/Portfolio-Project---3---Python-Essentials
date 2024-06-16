@@ -1,3 +1,13 @@
-# Your code goes here.
-# You can delete these comments, but do not change the name of this file
-# Write your code to expect a terminal of 80 characters wide and 24 rows high
+#Import tkinter library
+from tkinter import *
+import random
+
+root = Tk()
+#Background Color
+root.configure(bg = "blue")
+#Set game area size
+root.geometry("600x600")
+#Add game name
+root.title("Minesweeper Game")
+#Prevent game area changing outside given height x width
+root.resizable(False, False)
