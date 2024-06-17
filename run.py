@@ -61,10 +61,13 @@ class Minesweeper:
         #Add stat button with padding
         self.start_button.pack(pady=10)
 
+        print("Start button added to top frame") #Debugging
+
         #Starts the game
         self.start_game()
 
     def start_game(self):
+        print("Game started")  # Debugging
         #Clear game area of any existing widgets
         for widget in game_area.winfo_children():
             widget.destroy()
@@ -87,7 +90,7 @@ class Minesweeper:
         #Create buttons for each cell
         for row in range(self.rows):
             for col in range(self.cols):
-                btn = Button(game_area, height = 2, width = 2)
+                btn = Button(game_area, height = 6, width = 10)
                 btn.grid(row = row, column = col)
                 #Bind left mouse button to show cell. Tkinter callback used for button click
                 btn.bind("<Button-1>", self.reveal_cell_callback(row, col))
@@ -112,4 +115,5 @@ class Minesweeper:
         return callback
 
 #Run the Game
+game = Minesweeper(root)
 root.mainloop()
