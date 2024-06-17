@@ -106,13 +106,21 @@ class Minesweeper:
             self.reveal_cell(row, col)
         return callback
 
-    #Define method to return callback function for flaggin cell
+    #Define method to return callback function for flagging cell
     def flag_cell_callback(self, row, col):
         #Callback function that will be called
         def callback(event):
             #Call flag_cell with the row and column
             self.flag_cell(row, col)
         return callback
+    
+    def reveal_cell(self, row, col):
+        #If cell has mine shows it and ends game
+        if self.board[row][col] == "M":
+            self.buttons[row][col].config(text = "Mine", bg = "red")
+            self.game_over()
+        else:
+            self.buttons[row][col].config(text = str(self.board[row][col]), bg = "green")
 
 #Run the Game
 game = Minesweeper(root)
