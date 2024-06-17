@@ -90,17 +90,33 @@ class Minesweeper:
         for mine in self.mines_set:
             row, col = mine
             self.board[row][col] = "M"
+        
+        #Calculate mines around each cell
+        self.calculate_mines_around()
 
         #Create buttons for each cell
         for row in range(self.rows):
             for col in range(self.cols):
-                btn = Button(game_area, height = 5, width = 5)
+                btn = Button(game_area, height = 6, width = 9)
                 btn.grid(row = row, column = col)
                 #Bind left mouse button to show cell. Tkinter callback used for button click
                 btn.bind("<Button-1>", self.reveal_cell_callback(row, col))
                 #Bind right mouse button to show cell. Tkinter callback used for button click
                 btn.bind("<Button-3>", self.flag_cell_callback(row, col))
                 self.buttons[row][col] = btn
+
+    def calculate_mines_around(self):
+        for row in range(self.rows):
+            for col in range(self.cols):
+                if self.board[row][col] != "M":
+                    mines_count = 0
+                    #Loop to check row mines. -1 and +2 prevent checking above and below board
+                    for row_adjacent in range(max(0, row -1), min(self.rows, row +2)):
+                        #Loop to check column mines within game board
+                        for col_adjacent in range(max(0, col -1), min(self.cols, col +2)):
+                            if self.board[row_adjacent][col_adjacent] == "M":
+                                mines_count += 1
+                    self.board[row][col] = mines_count
 
     #Define method to retun callback function for revealing cell
     def reveal_cell_callback(self, row, col):
