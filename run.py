@@ -87,10 +87,14 @@ class Minesweeper:
             col = random.randint(0, self.cols -1)
             self.mines_set.add((row, col))
 
+        for mine in self.mines_set:
+            row, col = mine
+            self.board[row][col] = "M"
+
         #Create buttons for each cell
         for row in range(self.rows):
             for col in range(self.cols):
-                btn = Button(game_area, height = 6, width = 10)
+                btn = Button(game_area, height = 5, width = 5)
                 btn.grid(row = row, column = col)
                 #Bind left mouse button to show cell. Tkinter callback used for button click
                 btn.bind("<Button-1>", self.reveal_cell_callback(row, col))
