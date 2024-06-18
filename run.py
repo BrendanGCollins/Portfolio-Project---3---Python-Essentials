@@ -97,7 +97,7 @@ class Minesweeper:
         #Create buttons for each cell
         for row in range(self.rows):
             for col in range(self.cols):
-                btn = Button(game_area, height = 6, width = 9)
+                btn = Button(game_area, height = 5, width = 12)
                 btn.grid(row = row, column = col)
                 #Bind left mouse button to show cell. Tkinter callback used for button click
                 btn.bind("<Button-1>", self.reveal_cell_callback(row, col))
@@ -141,6 +141,17 @@ class Minesweeper:
             self.game_over()
         else:
             self.buttons[row][col].config(text = str(self.board[row][col]), bg = "green")
+
+    #Function for flagging/unflagging cells
+    def flag_cell(self, row, col):
+        btn = self.buttons[row][col]
+        #Check current text displayed. If text is empty string means currently unflagged
+        if btn["text"] == "":
+            # Changes btn to display 'F' and color to yellow
+            btn.config(text="F", bg="yellow")
+        # If already flagged, unflag
+        elif btn["text"] == "F":
+            btn.config(text="", bg="white")
 
 #Run the Game
 game = Minesweeper(root)
