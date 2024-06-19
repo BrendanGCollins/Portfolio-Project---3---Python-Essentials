@@ -28,6 +28,75 @@
     - Highscore table: A table showing high scores based on how quickly the game was completed.
 
 
+
+
+
+
+- Manual Testing
+<table>
+    <tr>
+            <th>Action</th>
+            <th>Expected Behavior</th>
+            <th>Pass or Fail</th>
+            <th>Notes<th>
+    </tr>
+        <tr>
+            <th>Click Start button</th>
+            <th>Initalise the game</th>
+            <th>Pass</th>
+            <th>Notes<th>
+    </tr>
+        <tr>
+            <th>Left-click on a safe cell</th>
+            <th>Reveals the cell content</th>
+            <th>Pass</th>
+            <th>Cell reveals and the number of mines surrounding the cell are shown<th>
+    </tr>
+        <tr>
+            <th>Right-click on a cell</th>
+            <th>Flags the cell as a potential mine</th>
+            <th>Pass</th>
+            <th>Cell shows an "F" and turns yellow<th>
+    </tr>
+        <tr>
+            <th>Click a mine</th>
+            <th>Ends the game and shows "Game Over" message</th>
+            <th>Pass</th>
+            <th>Ends the game and shows "Game Over" message<th>
+    </tr>
+        <tr>
+            <th>Click Start button after game over</th>
+            <th>Resets the game board</th>
+            <th>Pass</th>
+            <th>Board is cleared and a new game starts<th>
+    </tr>
+        <tr>
+            <th>Left-click on a flagged cell</th>
+            <th>No action</th>
+            <th>Pass</th>
+            <th>Notes<th>
+    </tr>
+        <tr>
+            <th>Right-click on a revealed cell</th>
+            <th>No action</th>
+            <th>Pass</th>
+            <th>Revealed cells should not change<th>
+    </tr>
+        <tr>
+            <th>Attempt to flag all mines</th>
+            <th>Flags all mines correctly without exceeding the mine count</th>
+            <th>Pass</th>
+            <th>Notes<th>
+    </tr>
+        <tr>
+            <th>Reveal cells adjacent to multiple mines</th>
+            <th>Correctly displays the number of adjacent mines</th>
+            <th>Pass</th>
+            <th>Numbers are correctly displayed based on adjacent mines<th>
+    </tr>
+</table>
+
+
 ## Reminders
 
 - Your code must be placed in the `run.py` file
