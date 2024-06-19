@@ -56,10 +56,12 @@ class Minesweeper:
         self.start_button = Button(
             top_frame,
             text = "Start",
-            command=self.start_game
+            command=self.start_game,
+            width = 20,
+            height = 2
         )
-        #Add stat button with padding
-        self.start_button.pack(pady=10)
+        #Center the start button in top frame
+        self.start_button.place(relx=0.5, rely=0.5, anchor=CENTER)
 
         print("Start button added to top frame") #Debugging
 
