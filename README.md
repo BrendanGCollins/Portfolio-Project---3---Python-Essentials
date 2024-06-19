@@ -1,8 +1,32 @@
 ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
-Welcome,
+# Minesweeper Game
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **May 14, 2024**
+ Minesweeper Game is a classic puzzle game where your goal is to clear a grid of squares by clicking on safe squares and avoiding mines. This project uses the tkinter library for the graphical user interface.
+
+
+## Features
+
+### Existing Features
+
+- __Navigation and Layout__
+
+    - Top Frame: Contains the Start button to initiate the game.
+    - Bottom Fame: Displays "Minesweeper" text.
+    - Right Frame: Provides game instructions for the player.
+    - Game Area: The main area where the game is displayed.
+
+- __Game Functionality__
+    - Start Button: Starts the game, places mines randomly and sets up the game board.
+    - Game board cells: Each cell can be clicked to reveal if it has a mine or not. Left mouse button reveals the cell, right mouse button flags the cell as potentially containing a mine.
+    - Winner notification: If all non-mine cells are revealed then a winning message is displayed.
+    - Game over notification: If a mine is clicked the game will end and a "Game Over" message is displayed. 
+
+- __Features left to Implement__
+    - Difficulty levels: Add options for different mine counts and grid sizes.
+    - Timer: Add a timer to track how quick you can beat the game.
+    - Highscore table: A table showing high scores based on how quickly the game was completed.
+
 
 ## Reminders
 
