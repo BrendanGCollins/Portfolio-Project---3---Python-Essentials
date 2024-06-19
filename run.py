@@ -6,7 +6,7 @@ from tkinter import messagebox
 #Create main window
 root = Tk()
 #Set background Color
-root.configure(bg = "blue")
+root.configure(bg = "grey")
 #Set size of main window
 root.geometry("600x600")
 #Add game name
@@ -21,18 +21,24 @@ top_frame = Frame(
     height = 120,
 )
 
-#Position frome at the top
+#Position frame at the top
 top_frame.place(x=0, y=0)
 
-#Add right frame for remaining mines
-right_frame = Frame(
+#Add bottom frame
+bottom_frame = Frame(
     root, bg = "grey",
-    width = 120,
-    height = 480,
+    width = 600,
+    height = 60,
 )
 
-#Add right frame position
-right_frame.place(x=480, y=120)
+#Add bottom frame position
+bottom_frame.place(x=0, y=540)
+
+# Add right frame
+right_frame = Frame(
+    root, bg="grey"
+)
+right_frame.pack(fill=Y, side=RIGHT)
 
 #Add game area frame
 game_area = Frame(
