@@ -44,6 +44,16 @@ right_frame = Frame(
 )
 right_frame.pack(fill=Y, side=RIGHT)
 
+#Add game instructions to right frame
+info_1 = Label(
+    right_frame,
+    text = "Clear a grid of squares by clicking on safe squares and avoiding mines.",
+    bg="grey",
+    wraplength=100, 
+    justify=LEFT
+)
+info_1.pack(pady = 10, padx = 10)
+
 #Add game area frame
 game_area = Frame(
     root, bg = "white",
