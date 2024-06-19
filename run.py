@@ -152,6 +152,13 @@ class Minesweeper:
         # If already flagged, unflag
         elif btn["text"] == "F":
             btn.config(text="", bg="white")
+    
+    def game_over(self):
+        messagebox.showinfo("Game Over", "You hit a mine")
+        #Disable buttons
+        for row in range(self.rows):
+            for col in range(self.cols):
+                self.buttons[row][col].config(state="disabled")
 
 #Run the Game
 game = Minesweeper(root)
