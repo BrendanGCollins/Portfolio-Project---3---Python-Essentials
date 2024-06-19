@@ -34,6 +34,10 @@ bottom_frame = Frame(
 #Add bottom frame position
 bottom_frame.place(x=0, y=540)
 
+#Add label for game text
+bottom_label = Label(bottom_frame, text = "Minesweeper", bg = "grey", font = "20")
+bottom_label.pack(pady=10)
+
 # Add right frame
 right_frame = Frame(
     root, bg="grey"
