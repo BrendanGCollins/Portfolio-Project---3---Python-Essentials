@@ -173,7 +173,6 @@ class Minesweeper:
         #update button text and color. Disable button and increment cell count
         else:
             self.buttons[row][col].config(text = str(self.board[row][col]), bg = "green")
-            self.buttons[row][col].config(state = DISABLED)
             self.revealed_cells +=1
             #Check if player has won the game
             if self.revealed_cells == (self.rows * self.cols) - self.mines:
@@ -191,7 +190,7 @@ class Minesweeper:
             btn.config(text="", bg="white")
     
     def win_game(self):
-        messagebox.showinfo("Winner!, you cleared all the mines.")
+        messagebox.showinfo("Winner!", "You cleared all the mines")
     
     def game_over(self):
         messagebox.showinfo("Game Over", "You hit a mine")
