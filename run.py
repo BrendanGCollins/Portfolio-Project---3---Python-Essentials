@@ -35,7 +35,7 @@ bottom_frame = Frame(
 bottom_frame.place(x=0, y=540)
 
 #Add label for game text
-bottom_label = Label(bottom_frame, text = "Minesweeper", bg = "grey", font = "20")
+bottom_label = Label(bottom_frame, text = "Minesweeper", bg = "grey", font =("Verdana", "20"))
 bottom_label.pack(pady=10)
 
 # Add right frame
@@ -71,6 +71,7 @@ class Minesweeper:
         self.rows = rows
         self.cols = cols
         self.mines = mines
+        self.revealed_cells = 0
 
         #Add Start button
         self.start_button = Button(
@@ -93,6 +94,9 @@ class Minesweeper:
         #Clear game area of any existing widgets
         for widget in game_area.winfo_children():
             widget.destroy()
+        
+        #Reset count for revealed cells
+        self.revealed_cells = 0
 
         #Start game board with zeros
         self.board = [[0 for _ in range(self.cols)] for _ in range(self.rows)]
@@ -140,7 +144,7 @@ class Minesweeper:
                                 mines_count += 1
                     self.board[row][col] = mines_count
 
-    #Define method to retun callback function for revealing cell
+    #Define method to return callback function for revealing cell
     def reveal_cell_callback(self, row, col):
         #Callback function that will be called
         def callback(event):
@@ -157,12 +161,23 @@ class Minesweeper:
         return callback
     
     def reveal_cell(self, row, col):
+        #Ignore if button is already revealed or flagged
+        btn = self.buttons[row][col]
+        if btn["state"] == DISABLED:
+            return
+
         #If cell has mine shows it and ends game
         if self.board[row][col] == "M":
             self.buttons[row][col].config(text = "Mine", bg = "red")
             self.game_over()
+        #update button text and color. Disable button and increment cell count
         else:
             self.buttons[row][col].config(text = str(self.board[row][col]), bg = "green")
+            self.buttons[row][col].config(state = DISABLED)
+            self.revealed_cells +=1
+            #Check if player has won the game
+            if self.revealed_cells == (self.rows * self.cols) - self.mines:
+                self.win_game()
 
     #Function for flagging/unflagging cells
     def flag_cell(self, row, col):
@@ -175,12 +190,15 @@ class Minesweeper:
         elif btn["text"] == "F":
             btn.config(text="", bg="white")
     
+    def win_game(self):
+        messagebox.showinfo("Winner!, you cleared all the mines.")
+    
     def game_over(self):
         messagebox.showinfo("Game Over", "You hit a mine")
         #Disable buttons
         for row in range(self.rows):
             for col in range(self.cols):
-                self.buttons[row][col].config(state="disabled")
+                self.buttons[row][col].config(state=DISABLED)
 
 #Run the Game
 game = Minesweeper(root)
